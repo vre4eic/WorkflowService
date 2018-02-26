@@ -24,10 +24,7 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.MediaType;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,13 +69,6 @@ public class WorkflowConfigController {
 
 			return null;
 		}
-	  //@JsonIgnore
-		@RequestMapping(value="/", method=RequestMethod.GET)
-		public String WelcomePage(ModelMap model, HttpSession session) {
-
-			session.setAttribute("release", "0.0.1");
-			
-			return "welcome";
-		}
+	    
 
 }
