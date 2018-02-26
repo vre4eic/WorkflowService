@@ -53,7 +53,7 @@ public class WorkflowConfigController {
 	}
 
 	 @ApiOperation(value = "Returns the list of REST Web Services", 
-		        notes = "A service with a valid identifier can invoke this web service to obtain a list of descriptions of web services", 
+		        notes = "A client with a valid identifier can invoke this web service to obtain a list of descriptions of web services in e-VRE catalogue", 
 		        response = String.class)
 	    @RequestMapping(value="/wfservice/getservices", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid) {
@@ -62,7 +62,7 @@ public class WorkflowConfigController {
 	 }
 	    
 	    @ApiOperation(value = "Search for Web Service descriptions", 
-		        notes = "A service with a valid identifier can invoke this web service to search the catalogue for Web Services descriptions", 
+		        notes = "A client with a valid identifier can invoke this web service to search the e-VRE catalogue for Web Services descriptions", 
 		        response = String.class)
 	    @RequestMapping(value="/wfservice/searchservices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 		public String searchServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String query){
