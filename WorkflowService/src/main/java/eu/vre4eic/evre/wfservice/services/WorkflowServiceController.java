@@ -24,7 +24,11 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,11 +45,13 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 
-@RestController
-public class WorkflowConfigController {
+@Controller
+public class WorkflowServiceController {
 
+	private static final String RELEASE = "release";
+	private static final String WELCOME_PAGE = "welcome";
 	Properties property = new Properties();
-	public WorkflowConfigController()  {
+	public WorkflowServiceController()  {
 		super();
 		
 		InputStream in;
@@ -62,23 +68,13 @@ public class WorkflowConfigController {
 		}
 	}
 
-	 @ApiOperation(value = "Returns the list of REST Web Services", 
-		        notes = "A client with a valid identifier can invoke this web service to obtain a list of descriptions of web services in e-VRE catalogue", 
-		        response = String.class)
-	    @RequestMapping(value="/wfservice/getservices", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid) {
-		
-		 return null;
-	 }
-	    
-	    @ApiOperation(value = "Search for Web Service descriptions", 
-		        notes = "A client with a valid identifier can invoke this web service to search the e-VRE catalogue for Web Services descriptions", 
-		        response = String.class)
-	    @RequestMapping(value="/wfservice/searchservices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-		public String searchServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String query){
+	//@JsonIgnore
+		@RequestMapping(value="/", method=RequestMethod.GET)
+		public String WelcomePage(ModelMap model, HttpSession session) {
 
-			return null;
+			session.setAttribute(RELEASE, property.getProperty("VERSION"));
+			
+			return WELCOME_PAGE;
 		}
-	    
 
 }
