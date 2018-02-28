@@ -72,7 +72,7 @@ public class WorkflowServiceController {
 		@RequestMapping(value="/", method=RequestMethod.GET)
 		public String WelcomePage(ModelMap model, HttpSession session) {
 
-			session.setAttribute(RELEASE, property.getProperty("VERSION"));
+			session.setAttribute(RELEASE, property.getProperty("Version_default"));
 			
 			return WELCOME_PAGE;
 		}

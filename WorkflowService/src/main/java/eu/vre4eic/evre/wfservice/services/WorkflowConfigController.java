@@ -62,10 +62,10 @@ public class WorkflowConfigController {
 		}
 	}
 
-	 @ApiOperation(value = "Returns the list of REST Web Services", 
-		        notes = "A client with a valid identifier can invoke this web service to obtain a list of descriptions of web services in e-VRE catalogue", 
+	 @ApiOperation(value = "Returns the list of  Web Service descriptions", 
+		        notes = "A client with a valid identifier can invoke this web service to obtain a list of descriptions of Web Services stored in e-VRE catalogue", 
 		        response = String.class)
-	    @RequestMapping(value="/wfservice/getservices", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @RequestMapping(value="/wfservice/getservicedescs", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid) {
 		
 		 return null;
@@ -74,8 +74,17 @@ public class WorkflowConfigController {
 	    @ApiOperation(value = "Search for Web Service descriptions", 
 		        notes = "A client with a valid identifier can invoke this web service to search the e-VRE catalogue for Web Services descriptions", 
 		        response = String.class)
-	    @RequestMapping(value="/wfservice/searchservices", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	    @RequestMapping(value="/wfservice/searchservicedescs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 		public String searchServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String query){
+
+			return null;
+		}
+	    
+	    @ApiOperation(value = "Save a Workflow descriptions", 
+		        notes = "A client with a valid identifier can invoke this web service to save the description of a Workflow in the e-VRE Catalogue", 
+		        response = String.class)
+	    @RequestMapping(value="/wfservice/savewfdesc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+		public String saveWfDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String description){
 
 			return null;
 		}

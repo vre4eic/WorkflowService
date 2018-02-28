@@ -20,7 +20,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 
-
+import eu.vre4eic.evre.core.comm.NodeLinker;
+import eu.vre4eic.evre.nodeservice.modules.authentication.AuthModule;
 import eu.vre4eic.evre.nodeservice.modules.metadata.MDModule;
 import eu.vre4eic.evre.nodeservice.modules.monitor.AdvisoryModule;
 import eu.vre4eic.evre.nodeservice.nodemanager.ZKServer;
@@ -35,7 +36,8 @@ import eu.vre4eic.evre.nodeservice.nodemanager.ZKServer;
 public class WfServiceStart {
 
 	
-    //private static MDModule mdModule;
+	private static AuthModule module;
+	private static MDModule MDmodule;
 
 	public static void main(String[] args) {
 		
@@ -44,10 +46,13 @@ public class WfServiceStart {
 		 
         SpringApplication.run(WfServiceStart.class, args);
        
-        AdvisoryModule.getInstance();
-        MDModule mdModule= MDModule.getInstance();
-        
-        
+        NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
+		String brokerURL =  node.getMessageBrokerURL();
+
+		module = AuthModule.getInstance(brokerURL);
+		MDmodule=MDModule.getInstance(brokerURL);
+
+
 		while (true) {
 			try {
 				Thread.sleep(3000);
@@ -55,8 +60,10 @@ public class WfServiceStart {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			mdModule.listToken();
+			module.listToken();
+			MDmodule.listToken();
 		}
+		
 
     }
 }
