@@ -48,7 +48,7 @@ public class WorkflowConfigController {
 	public WorkflowConfigController()  {
 		super();
 		
-		InputStream in;
+		/*InputStream in;
 		
 		try {
 			in = this.getClass().getClassLoader()
@@ -59,14 +59,14 @@ public class WorkflowConfigController {
 			
 		} catch (IOException e) {
 			
-		}
+		}*/
 	}
 
 	 @ApiOperation(value = "Returns the list of  Web Service descriptions", 
 		        notes = "A client with a valid identifier can invoke this web service to obtain a list of descriptions of Web Services stored in e-VRE catalogue", 
 		        response = String.class)
-	    @RequestMapping(value="/wfservice/getservicedescs", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid) {
+	    @RequestMapping(value="/wfservice/getserviced", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="token") String token) {
 		
 		 return null;
 	 }
@@ -74,17 +74,17 @@ public class WorkflowConfigController {
 	    @ApiOperation(value = "Search for Web Service descriptions", 
 		        notes = "A client with a valid identifier can invoke this web service to search the e-VRE catalogue for Web Services descriptions", 
 		        response = String.class)
-	    @RequestMapping(value="/wfservice/searchservicedescs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-		public String searchServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String query){
+	    @RequestMapping(value="/wfservice/searchserviced", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+		public String searchServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String query, @RequestParam(value="token") String token){
 
 			return null;
 		}
 	    
-	    @ApiOperation(value = "Save a Workflow descriptions", 
+	    @ApiOperation(value = "Save a Workflow description", 
 		        notes = "A client with a valid identifier can invoke this web service to save the description of a Workflow in the e-VRE Catalogue", 
 		        response = String.class)
-	    @RequestMapping(value="/wfservice/savewfdesc", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-		public String saveWfDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String description){
+	    @RequestMapping(value="/wfservice/savewfd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+		public String saveWfDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String description, @RequestParam(value="token") String token){
 
 			return null;
 		}

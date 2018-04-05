@@ -36,9 +36,9 @@ import eu.vre4eic.evre.nodeservice.nodemanager.ZKServer;
 public class WfServiceStart {
 
 	
-	private static AuthModule module;
+	/*private static AuthModule module;
 	private static MDModule MDmodule;
-
+*/
 	public static void main(String[] args) {
 		
 		//ZKServer.init();
@@ -46,7 +46,7 @@ public class WfServiceStart {
 		 
         SpringApplication.run(WfServiceStart.class, args);
        
-        NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
+        /*NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
 		String brokerURL =  node.getMessageBrokerURL();
 
 		module = AuthModule.getInstance(brokerURL);
@@ -63,7 +63,7 @@ public class WfServiceStart {
 			module.listToken();
 			MDmodule.listToken();
 		}
-		
+		*/
 
     }
 }

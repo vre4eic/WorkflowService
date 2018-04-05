@@ -2,14 +2,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.vre4eic.evre</groupId>
   <artifactId>WorkflowService</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <packaging>war</packaging>
 	<name>WorkflowService</name>
 	<description>The Workflow Service of the e-VRE system</description>
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>0.0.1-SNPSHOT</spring.framework.version>
-		<start-class>eu.vre4eic.evre.nodeservice.WFServiceStart</start-class>
+		<start-class>eu.vre4eic.evre.wfservice.WfServiceStart</start-class>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -18,13 +18,15 @@
 	</parent>
 
 	<dependencies>
+	
 	<dependency>
     <groupId>eu.vre4eic.evre</groupId>
     <artifactId>NodeService</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
     <scope>system</scope>
-    <systemPath>${project.basedir}/src/main/resources/NodeService-0.0.3-SNAPSHOT-classes.jar</systemPath>
+    <systemPath>${project.basedir}/src/main/resources/NodeService-0.0.3-SNAPSHOT.jar</systemPath>
 </dependency>
+ 
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>rabbitmq-client</artifactId>
@@ -123,12 +125,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--  
         <dependency>
         <groupId>org.telegram</groupId>
         <artifactId>telegrambots</artifactId>
         <version>2.4.4.5</version>
     </dependency>
-
+		-->
         <dependency>
         	<groupId>org.apache.curator</groupId>
         	<artifactId>apache-curator</artifactId>
@@ -145,19 +148,38 @@
         	<artifactId>curator-framework</artifactId>
         	<version>3.3.0</version>
         </dependency>
-
+	<!--  
         <dependency>
         	<groupId>org.apache.curator</groupId>
         	<artifactId>curator-test</artifactId>
         	<version>4.0.0</version>
         </dependency>
+        -->
         <dependency>
         	<groupId>org.apache.maven.plugins</groupId>
         	<artifactId>maven-shade-plugin</artifactId>
         	<version>3.1.0</version>
         </dependency>
+        <dependency>
+    	<groupId>com.auth0</groupId>
+   		 <artifactId>java-jwt</artifactId>
+    	<version>3.3.0</version>
+		</dependency>
+		<!-- 
+		<dependency>
+	  		<groupId>eu.vre4eic.evre</groupId>
+	  		<artifactId>NodeService</artifactId>
+	  		<version>0.0.3-SNAPSHOT</version>
+		</dependency>
+		 -->
 	</dependencies>
-	
+	<repositories>
+  <repository>
+    <id>data-local</id>
+    <name>data</name>
+    <url>file://${project.basedir}/repo</url>
+  </repository>
+</repositories>
 	
 	<build>
 		<plugins>
