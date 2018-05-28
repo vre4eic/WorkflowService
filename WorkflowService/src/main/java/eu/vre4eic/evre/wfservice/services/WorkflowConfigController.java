@@ -30,7 +30,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import eu.vre4eic.evre.core.messages.MetadataMessage;
+import eu.vre4eic.evre.core.messages.impl.MetadataMessageImpl;
+import eu.vre4eic.evre.wfservice.wfconfigurator.impl.WorkflowConfiguratorImpl;
 import io.swagger.annotations.ApiOperation;
 
 
@@ -45,6 +47,7 @@ import io.swagger.annotations.ApiOperation;
 public class WorkflowConfigController {
 
 	Properties property = new Properties();
+	WorkflowConfiguratorImpl wfc= new WorkflowConfiguratorImpl();
 	public WorkflowConfigController()  {
 		super();
 		
@@ -68,7 +71,7 @@ public class WorkflowConfigController {
 	    @RequestMapping(value="/wfservice/getserviced", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="token") String token) {
 		
-		 return null;
+		 return wfc.getServiceDescriptions(token).toJSON();
 	 }
 	    
 	    @ApiOperation(value = "Search for Web Service descriptions", 
