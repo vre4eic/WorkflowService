@@ -46,11 +46,11 @@ public class WfServiceStart {
 		 
         SpringApplication.run(WfServiceStart.class, args);
        
-        /*NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
+        NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
 		String brokerURL =  node.getMessageBrokerURL();
 
-		module = AuthModule.getInstance(brokerURL);
-		MDmodule=MDModule.getInstance(brokerURL);
+		
+		MDModule c = MDModule.getInstance(brokerURL);
 
 
 		while (true) {
@@ -60,10 +60,10 @@ public class WfServiceStart {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			module.listToken();
-			MDmodule.listToken();
+			
+			c.listToken();
 		}
-		*/
+		
 
     }
 }

@@ -71,7 +71,7 @@ public class WorkflowConfigController {
 	    @RequestMapping(value="/wfservice/getserviced", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	 public String getServiceDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="token") String token) {
 		
-		 return wfc.getServiceDescriptions(token).toJSON();
+		 return wfc.getServiceDescriptions(evresid, token).toJSON();
 	 }
 	    
 	    @ApiOperation(value = "Search for Web Service descriptions", 
@@ -87,9 +87,10 @@ public class WorkflowConfigController {
 		        notes = "A client with a valid identifier can invoke this web service to save the description of a Workflow in the e-VRE Catalogue", 
 		        response = String.class)
 	    @RequestMapping(value="/wfservice/savewfd", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-		public String saveWfDescriptions(@RequestParam(value="evresid") String evresid, @RequestParam(value="query") String description, @RequestParam(value="token") String token){
+		public String saveWfDescriptions(@RequestParam(value="evresid") String evresId, @RequestParam(value="description") String description, @RequestParam(value="token") String token){
 
-			return null;
+	    	
+			 return wfc.saveWfDescriptions(evresId, description, token).toJSON();
 		}
 	    
 
