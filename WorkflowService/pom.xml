@@ -24,7 +24,7 @@
     <artifactId>NodeService</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
     <scope>system</scope>
-    <systemPath>${project.basedir}/src/main/resources/NodeService-0.0.3-SNAPSHOT.jar</systemPath>
+    <systemPath>${project.basedir}/src/main/resources/NodeService-0.0.3-SNAPSHOT-classes.jar</systemPath>
     
 </dependency>
  
@@ -171,6 +171,23 @@
 	  		<version>0.0.3-SNAPSHOT</version>
 		</dependency>
 		 -->
+		 <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-discovery</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-async</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+		 
 	</dependencies>
 	<repositories>
   <repository>

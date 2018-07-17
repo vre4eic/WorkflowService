@@ -53,6 +53,8 @@ public class WorkflowConfiguratorImpl {
 	
 	public WorkflowConfiguratorImpl(){
 		NodeLinker node = NodeLinker.init("v4e-lab.isti.cnr.it:2181");
+		 node.addService("WorkflowService", "the e-VRE building block that manages workflows", "entrypoint");
+		 
 		String brokerURL =  node.getMessageBrokerURL();
 
 		
@@ -145,13 +147,12 @@ public class WorkflowConfiguratorImpl {
 		System.out.println (description);
 		MetadataMessageImpl mmi=new MetadataMessageImpl("Workflow created!", Common.ResponseStatus.SUCCEED);
 		try{
-		mmi.setOperation(MetadataOperationType.INSERT);
+		mmi.setOperation(MetadataOperationType.INSERTWORKFLOW);
 		mmi.setToken(token);
 		if (!module.checkToken(token)){
 			mmi.setStatus(Common.ResponseStatus.FAILED);
 			mmi.setMessage("Error, please contact server admin");
 			mmi.setJsonMessage(new JSONObject().put("workflow_description", ""));
-			
 
 			return mmi;
 		}
